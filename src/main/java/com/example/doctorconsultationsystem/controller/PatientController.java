@@ -68,12 +68,20 @@ public Patient loginPatient(@RequestBody Patient pt) throws Exception{
 	
 }
 
+//
+//@RequestMapping(value="getdocpatient",method=RequestMethod.POST
+//,consumes=MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//public List<Patient> getPatientAssignedToDoc(@RequestBody Patient pt){
+//		System.out.println("yooooo:"+pt.getAdocid());
+//		return ps.getPatientByDocId(pt);
+//}
+
 
 @RequestMapping(value="getdocpatient",method=RequestMethod.POST
 ,consumes=MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-public List<Patient> getPatientAssignedToDoc(@RequestBody Patient pt){
-		System.out.println("yooooo:"+pt.getAdocid());
-		return ps.getPatientByDocId(pt);
+public List<Patient> getPatientAssignedToDoc(@RequestBody Doctor dr){
+		System.out.println("yooooo:"+dr.getDocid());
+		return ps.getPatientByDocId(dr);
 }
 
 @RequestMapping(value="patients",method=RequestMethod.GET)
@@ -86,6 +94,14 @@ public List<Patient> getAllPatients(){
 ,consumes=MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public List<Patient> bookingrq(@RequestBody Patient pt){
 		return ps.bookingRequest(pt);
+}
+
+@RequestMapping(value="patientbyid",method=RequestMethod.POST
+,consumes=MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+public Patient getPatientUsingId(@RequestBody int pid){
+		
+		return ps.getPatientById(pid);
+
 }
 }
 

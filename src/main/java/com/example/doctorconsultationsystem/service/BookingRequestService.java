@@ -18,8 +18,14 @@ public class BookingRequestService {
 		return br.findAll();
 	}
 	
-	public List<BookingRequest> addBookingRequest(BookingRequest nb) {
+	public BookingRequest addBookingRequest(BookingRequest nb) {
 		br.save(nb);
+		return br.findByPid(nb.getPid());
+	
+	}
+	
+	public List<BookingRequest> deleteRequest(int pid){
+		br.deleteById(pid);
 		return br.findAll();
 	}
 	

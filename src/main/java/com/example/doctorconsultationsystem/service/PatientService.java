@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.doctorconsultationsystem.repositories.PatientRepo;
+import com.example.doctorconsultationsystem.models.Doctor;
 import com.example.doctorconsultationsystem.models.Patient;
 
 @Service
@@ -29,8 +30,8 @@ public class PatientService {
 //		return pr.findBypidAndpatient_password(id,pass);
 //	}
 	
-	public List<Patient> getPatientByDocId(Patient p){
-		return pr.findByadocid(p.getAdocid());
+	public List<Patient> getPatientByDocId(Doctor dr){
+		return pr.findByadocid(dr.getDocid());
 	}
 	
 	public List<Patient> getPatients(){
@@ -41,5 +42,7 @@ public class PatientService {
 		pr.save(p);
 		return pr.findAll();
 	}
+	
+	
 	
 }
